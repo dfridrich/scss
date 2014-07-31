@@ -1,0 +1,129 @@
+@mixin basis {
+  .clear { clear: both; }
+  body, html { min-height: 100%; }
+  .nowrap { white-space: nowrap; }
+}
+
+// Smooth font in Chrome
+html {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/*a[href^="http"] {
+  &:after {
+    content: " \f08e";
+    font-family:'FontAwesome';
+  }
+}*/
+
+@mixin dfBoxShadow($x, $y, $offset, $color) {
+  -moz-box-shadow: $x $y $offset $color; /* Firefox */
+  -webkit-box-shadow: $x $y $offset $color; /* Safari, Chrome */
+  box-shadow: $x $y $offset $color; /* CSS3 */
+}
+
+@mixin dfBorderRadius($r1, $r2, $r3, $r4) {
+  -webkit-border-top-left-radius: $r1;
+  -webkit-border-top-right-radius: $r2;
+  -webkit-border-bottom-right-radius: $r3;
+  -webkit-border-bottom-left-radius: $r4;
+  -moz-border-radius-topleft: $r1;
+  -moz-border-radius-topright: $r2;
+  -moz-border-radius-bottomright: $r3;
+  -moz-border-radius-bottomleft: $r4;
+  border-top-left-radius: $r1;
+  border-top-right-radius: $r2;
+  border-bottom-right-radius: $r3;
+  border-bottom-left-radius: $r4;
+}
+
+@mixin dfBorderRadiusSimple($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin dfBorderRadiusReset() {
+  @include borderRadiusSimple(0);
+}
+
+@mixin dfBorderRadiusTop($radius) {
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-topright: $radius;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin dfBorderRadiusBottom($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin dfBackgroundAlpha($r, $g, $b, $a) {
+  background: rgb($r, $g, $b);
+  background: rgba($r, $g, $b, $a);
+}
+
+@mixin dfGradient($from, $to, $old: $from) {
+  background: $old; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: -moz-linear-gradient(top, $from 0%, $to 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$from), color-stop(100%,$to)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $from 0%, $to 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $from 0%, $to 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $from 0%, $to 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $from 0%, $to 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='to',GradientType=0 ); /* IE6-8 */
+}
+
+@mixin dfGradientHorizontal($from, $to, $old: $from) {
+  background: $old; /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: -moz-linear-gradient(left, $from 0%, $to 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$from), color-stop(100%,$to)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, $from 0%, $to 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, $from 0%, $to 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $from 0%, $to 100%); /* IE10+ */
+  background: linear-gradient(to right, $from 0%, $to 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='to',GradientType=0 ); /* IE6-8 */
+}
+
+@mixin dfAnimation($property) {
+  -webkit-transition: $property;
+  -moz-transition: $property;
+  -o-transition: $property;
+  -ms-transition: $property;
+  transition: $property;
+}
+
+@mixin dfMinHeight($height) {
+  min-height: $height;
+  height: auto !important;
+  height: $height;
+}
+
+@mixin dfCoverBg() {
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin dfRotate($degrees) {
+  -webkit-transform: rotate($degrees);
+  -moz-transform: rotate($degrees);
+  -o-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
